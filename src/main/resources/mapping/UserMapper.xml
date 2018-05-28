@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.samsundot.invoice.mapper.UserMapper" >
+ <!--  <resultMap id="ResultMap" type="com.samsundot.invoice.bean.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+  </resultMap> -->
+
+
+<sql id="Base_Column_List" >
+    id, name, age, sex
+  </sql>
+<!-- 这个方法是我自己加的 -->
+  <select id="selectAllUser" resultType="hashmap">
+    select * from user
+  </select>
+  
+   <select id="callProc" resultType="String">
+    CALL generate_code(#{datatype},@A)
+  </select>
+  
+  
+  <select id="testList" resultType="hashmap">
+    CALL testList(@l)
+  </select>
+  <select id="findMax" resultType="String">
+    select max(code) from code
+  </select>
+  
+  
+  
+  </mapper>
